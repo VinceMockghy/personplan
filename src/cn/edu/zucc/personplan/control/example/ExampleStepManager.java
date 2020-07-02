@@ -1,4 +1,4 @@
-package cn.edu.zucc.personplan.comtrol.example;
+package cn.edu.zucc.personplan.control.example;
 
 import java.util.ArrayList;
 import java.util.List;

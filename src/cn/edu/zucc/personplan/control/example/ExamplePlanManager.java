@@ -1,4 +1,4 @@
-package cn.edu.zucc.personplan.comtrol.example;
+package cn.edu.zucc.personplan.control.example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,10 @@ public class ExamplePlanManager implements IPlanManager {
 	@Override
 	public List<BeanPlan> loadAll() throws BaseException {
 		List<BeanPlan> result=new ArrayList<BeanPlan>();
+
+
+
+
 		BeanPlan p=new BeanPlan();
 		result.add(p);
 		return result;

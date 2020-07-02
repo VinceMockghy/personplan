@@ -47,7 +47,7 @@ public class FrmLogin extends JDialog implements ActionListener {
 		workPane.add(labelPwd);
 		workPane.add(edtPwd);
 		this.getContentPane().add(workPane, BorderLayout.CENTER);
-		this.setSize(320, 140);
+		this.setSize(300, 140);
 		// ∆¡ƒªæ”÷–œ‘ æ
 		double width = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 		double height = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
