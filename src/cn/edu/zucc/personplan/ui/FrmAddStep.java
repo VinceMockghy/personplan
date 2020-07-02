@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -70,7 +71,7 @@ public class FrmAddStep extends JDialog implements ActionListener {
 			try {
 				PersonPlanUtil.stepManager.add(plan,name,sd,fd);
 				this.setVisible(false);
-			} catch (BaseException e1) {
+			} catch (BaseException | ParseException e1) {
 				JOptionPane.showMessageDialog(null, e1.getMessage(), "´íÎó",JOptionPane.ERROR_MESSAGE);
 				return;
 			}
