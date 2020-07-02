@@ -14,7 +14,7 @@ import cn.edu.zucc.personplan.model.BeanStep;
 import cn.edu.zucc.personplan.model.BeanUser;
 import cn.edu.zucc.personplan.util.BaseException;
 import cn.edu.zucc.personplan.util.BusinessException;
-import cn.edu.zucc.personplan.util.DBUtil;
+import cn.edu.zucc.personplan.util.DBUtil_pool;
 
 public class ExampleStepManager implements IStepManager {
 
@@ -36,7 +36,7 @@ public class ExampleStepManager implements IStepManager {
         Connection conn = null;
 
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             conn.setAutoCommit(false);
             int insertstep = 0;
             String sql = "select max(step_order) from tbl_step where plan_id = ?";
@@ -95,7 +95,7 @@ public class ExampleStepManager implements IStepManager {
         List<BeanStep> result = new ArrayList<BeanStep>();
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             String sql = "select step_order, step_name, plan_begin_time, plan_end_time,real_begin_time, real_end_time, step_id ,plan_id "
                     + "from tbl_step " + "where plan_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
@@ -141,7 +141,7 @@ public class ExampleStepManager implements IStepManager {
         Connection conn = null;
 
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             conn.setAutoCommit(false);
 
             String sql = "delete from tbl_step where step_id = ?";
@@ -209,7 +209,7 @@ public class ExampleStepManager implements IStepManager {
         // TODO Auto-generated method stub
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             conn.setAutoCommit(false);
 
             String sql = "update tbl_step set real_begin_time = ? where step_id = ?";
@@ -260,7 +260,7 @@ public class ExampleStepManager implements IStepManager {
         // TODO Auto-generated method stub
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             conn.setAutoCommit(false);
 
             String sql = "update tbl_step set real_end_time = ? where step_id = ?";
@@ -311,7 +311,7 @@ public class ExampleStepManager implements IStepManager {
         // TODO Auto-generated method stub
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             conn.setAutoCommit(false);
 
             if(step.getStep_order()==1){
@@ -367,7 +367,7 @@ public class ExampleStepManager implements IStepManager {
         // TODO Auto-generated method stub
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             conn.setAutoCommit(false);
             int max_step = 0;
             String sql = "select max(step_order) from tbl_step where plan_id = ?";

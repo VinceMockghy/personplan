@@ -4,7 +4,7 @@ import cn.edu.zucc.personplan.itf.IUserManager;
 import cn.edu.zucc.personplan.model.BeanUser;
 import cn.edu.zucc.personplan.util.BaseException;
 import cn.edu.zucc.personplan.util.BusinessException;
-import cn.edu.zucc.personplan.util.DBUtil;
+import cn.edu.zucc.personplan.util.DBUtil_pool;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -25,7 +25,7 @@ public class ExampleUserManager implements IUserManager {
         }
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             String sql = "select user_id from tbl_user where user_id = ?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, userid);
@@ -71,7 +71,7 @@ public class ExampleUserManager implements IUserManager {
         }
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             String sql = "select user_pwd from tbl_user where user_id = ?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, userid);
@@ -120,7 +120,7 @@ public class ExampleUserManager implements IUserManager {
         }
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             String sql = "select user_pwd from tbl_user where user_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, user.getUserid());

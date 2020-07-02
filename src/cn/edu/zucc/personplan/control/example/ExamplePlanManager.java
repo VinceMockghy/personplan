@@ -10,7 +10,7 @@ import cn.edu.zucc.personplan.model.BeanPlan;
 import cn.edu.zucc.personplan.model.BeanUser;
 import cn.edu.zucc.personplan.util.BaseException;
 import cn.edu.zucc.personplan.util.BusinessException;
-import cn.edu.zucc.personplan.util.DBUtil;
+import cn.edu.zucc.personplan.util.DBUtil_pool;
 
 public class ExamplePlanManager implements IPlanManager {
 
@@ -23,7 +23,7 @@ public class ExamplePlanManager implements IPlanManager {
         Connection conn = null;
         BeanPlan p = new BeanPlan();
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             String user_id = BeanUser.currentLoginUser.getUserid();
             int plan_ord = 0;
             int plan_id = 0;
@@ -98,7 +98,7 @@ public class ExamplePlanManager implements IPlanManager {
         Connection conn = null;
 
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             String sql = "SELECT plan_id, plan_name,step_count,finished_step_count ,plan_order from tbl_plan where user_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, BeanUser.currentLoginUser.getUserid());
@@ -131,7 +131,7 @@ public class ExamplePlanManager implements IPlanManager {
         int plan_id = plan.getPlan_id();
         Connection conn = null;
         try {
-            conn = DBUtil.getConnection();
+            conn = DBUtil_pool.getConnection();
             String sql = "select count(*) from tbl_step where plan_id= " + plan_id;
             java.sql.Statement st = conn.createStatement();
             java.sql.ResultSet rs = st.executeQuery(sql);
